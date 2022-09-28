@@ -308,6 +308,8 @@ workflows:
           requires: [build-backend]
       - scan-backend:
           requires: [build-backend]
+          context:
+            - udacity-slack
       - scan-frontend:
           requires: [build-frontend]
       #- deploy-infrastructure:
