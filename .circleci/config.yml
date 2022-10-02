@@ -226,7 +226,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: circleci/node:13.8.0
+      - image: python:3.9
     steps:
       - checkout
       - attach_workspace:
@@ -235,8 +235,7 @@ jobs:
           name: Install dependencies
           command: |
             sudo apt-get install curl
-            sudo apt-get install python3
-            sudo apt-get install pip
+            yum install -y tar gzip
             pip install ansible
             pip install awscli
       - run:
