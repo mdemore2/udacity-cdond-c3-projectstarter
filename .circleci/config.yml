@@ -216,7 +216,7 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl https://kvdb.io/EQ6B2MeJvp7ot7vFsEWUXS/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+            curl https://kvdb.io/EQ6B2MeJvp7ot7vFsEWUXS/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
@@ -229,16 +229,16 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - attach_workspace:
+          at: /~
       - run:
           name: Install dependencies
           command: |
-            yum install -y tar gzip
-            yum install -y python3
-            yum install -y pip
-            pip install ansible
             sudo apt-get install curl
-      - attach_workspace:
-          at: /~
+            sudo apt-get install python3
+            sudo apt-get install pip
+            pip install ansible
+            pip install awscli
       - run:
           name: Get backend url
           command: |
