@@ -232,7 +232,6 @@ jobs:
           command: |
             yum install -y tar gzip
             yum install -y python3
-            yum install -y nodejs
             pip install ansible
             sudo apt-get install curl
       - attach_workspace:
