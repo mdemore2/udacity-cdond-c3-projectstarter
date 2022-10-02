@@ -205,8 +205,6 @@ jobs:
           keys: [backend-build]
       - add_ssh_keys:
           fingerprints: ["fb:e3:3b:45:5f:e4:ee:63:26:25:cc:f3:1c:9f:3a:53"]
-      - attach_workspace:
-          at: /~
       - run:
           name: Run migrations
           command: |
