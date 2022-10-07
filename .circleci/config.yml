@@ -226,18 +226,17 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: python:3.9
+      - image: amazon/aws-cli
     steps:
       - checkout
-      - attach_workspace:
-          at: /~
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get install curl
             yum install -y tar gzip
-            pip install ansible
-            pip install awscli
+            yum install -y python3-pip
+            yum install -y curl
+            curl --silent --location https://rpm.nodesource.com/setup_14.x | bash -
+            yum install -y nodejs
       - run:
           name: Get backend url
           command: |
