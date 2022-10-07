@@ -273,7 +273,7 @@ jobs:
           command: |
               pip install ansible
               pip install awscli
-              apk add --update tar gzip ansible nodejs npm curl
+              apt-get --update tar gzip ansible nodejs npm curl
 
       - run:
           name: Deploy backend
@@ -335,9 +335,9 @@ jobs:
 #
 #  cloudfront-update:
 #    docker:
-#      # Docker image here that supports AWS CLI
+#      - image: amazon/aws-cli
 #    steps:
-#      # Checkout code from git
+#      - checkout
 #      - run:
 #          name: Install dependencies
 #          command: |
