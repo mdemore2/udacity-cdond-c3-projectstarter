@@ -1,0 +1,21 @@
+---
+- name: "copy files"
+  become: true
+  unarchive:
+    src: ~/project/backend.tar.gz
+    dest: ~/backend
+
+- name: "install"
+  shell: |
+    cd ~/backend
+    npm install
+
+- name: "setup"
+  shell: |
+    cd ~/backend
+    pm2 stop default
+
+- name: "start app"
+  shell: |
+    cd ~/backend
+    pm2 start npm -- start
