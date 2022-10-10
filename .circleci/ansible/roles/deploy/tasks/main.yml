@@ -1,4 +1,10 @@
 ---
+- name: "create dir"
+  become: true
+  file:
+    path: ~/backend
+    state: directory
+
 - name: "copy files"
   become: true
   unarchive:
