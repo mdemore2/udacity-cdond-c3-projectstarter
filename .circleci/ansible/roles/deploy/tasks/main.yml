@@ -2,7 +2,7 @@
 - name: "copy files"
   become: true
   unarchive:
-    src: ~/backend/artifact.tar.gz
+    src: ~/project/backend/artifact.tar.gz
     dest: ~/backend
 
 - name: "install"
