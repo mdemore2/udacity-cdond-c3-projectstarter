@@ -9,7 +9,7 @@
   become: true
   unarchive:
     src: ~/project/artifact.tar.gz
-    dest: ~/backend
+    dest: /home/ubuntu
 
 - name: "install npm"
   become: true
@@ -17,18 +17,22 @@
     name: npm
     state: latest
     update_cache: true
+  
+- name: "install pm2"
+  become: true
+  npm:
+    name: pm2
+    global: yes
+    state: present
 
 - name: "install"
   shell: |
-    cd ~/backend
     npm install
 
 - name: "setup"
   shell: |
-    cd ~/backend
     pm2 stop default
 
 - name: "start app"
   shell: |
-    cd ~/backend
     pm2 start npm -- start
