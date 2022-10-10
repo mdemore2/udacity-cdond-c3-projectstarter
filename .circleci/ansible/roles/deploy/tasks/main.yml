@@ -27,12 +27,12 @@
 
 - name: "install"
   shell: |
-    npm install
+    sudo npm install
 
 - name: "setup"
   shell: |
-    pm2 stop default
+    sudo pm2 stop default
 
 - name: "start app"
   shell: |
-    pm2 start npm -- start
+    sudo pm2 start npm -- start
