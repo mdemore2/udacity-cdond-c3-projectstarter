@@ -2,7 +2,7 @@
 - name: "copy files"
   become: true
   unarchive:
-    src: ~/project/backend.tar.gz
+    src: ~/backend.tar.gz
     dest: ~/backend
 
 - name: "install"
