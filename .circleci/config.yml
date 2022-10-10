@@ -274,7 +274,13 @@ jobs:
               pip install ansible
               pip install awscli
               apk add --update tar gzip ansible nodejs npm curl
-
+      - run:
+          name: Add back-end ip to ansible inventory
+          command: |
+            aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --output text >> .circleci/ansible/inventory.txt
       - run:
           name: Deploy backend
           command: |
