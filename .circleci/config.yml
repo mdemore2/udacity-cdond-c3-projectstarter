@@ -273,6 +273,7 @@ jobs:
           command: |
               pip install ansible
               pip install awscli
+              apk add --update openssh-client
               apk add --update tar gzip ansible nodejs npm curl
       - run:
           name: Add back-end ip to ansible inventory
