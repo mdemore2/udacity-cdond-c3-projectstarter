@@ -30,11 +30,6 @@
   shell: |
     npm install
 
-- name: "setup"
-  become: true
-  shell: |
-    pm2 stop default
-
 - name: "start app"
   become: true
   shell: |
