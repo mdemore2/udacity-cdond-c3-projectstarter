@@ -26,13 +26,16 @@
     state: present
 
 - name: "install"
+  become: true
   shell: |
-    sudo npm install
+    npm install
 
 - name: "setup"
+  become: true
   shell: |
-    sudo pm2 stop default
+    pm2 stop default
 
 - name: "start app"
+  become: true
   shell: |
-    sudo pm2 start npm -- start
+    pm2 start npm -- start
